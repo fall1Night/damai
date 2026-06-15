@@ -3,3 +3,7 @@ com.damai.starter.kafka.KafkaProducerAutoConfiguration
 com.damai.starter.sentinel.SentinelAutoConfiguration
 com.damai.starter.es.ElasticSearchAutoConfiguration
 com.damai.starter.mybatis.MybatisPlusAutoConfiguration
+com.damai.starter.seata.SeataAutoConfiguration
+com.damai.starter.web.GlobalExceptionHandler
+com.damai.starter.web.TraceIdFilter
+com.damai.starter.web.CorsAutoConfiguration
