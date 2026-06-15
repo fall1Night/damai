@@ -1,0 +1,105 @@
+{
+  "settings": {
+    "number_of_shards": 3,
+    "number_of_replicas": 1,
+    "index.refresh_interval": "1s",
+    "analysis": {
+      "analyzer": {
+        "ik_index_analyzer": {
+          "type": "custom",
+          "tokenizer": "ik_max_word"
+        },
+        "ik_search_analyzer": {
+          "type": "custom",
+          "tokenizer": "ik_smart"
+        }
+      }
+    }
+  },
+  "mappings": {
+    "dynamic": "strict",
+    "properties": {
+      "programId": {
+        "type": "keyword"
+      },
+      "title": {
+        "type": "text",
+        "analyzer": "ik_index_analyzer",
+        "search_analyzer": "ik_search_analyzer",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "artist": {
+        "type": "text",
+        "analyzer": "ik_index_analyzer",
+        "search_analyzer": "ik_search_analyzer"
+      },
+      "venue": {
+        "type": "text",
+        "analyzer": "ik_index_analyzer",
+        "search_analyzer": "ik_search_analyzer",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "description": {
+        "type": "text",
+        "analyzer": "ik_index_analyzer",
+        "search_analyzer": "ik_search_analyzer"
+      },
+      "typeCode": {
+        "type": "keyword"
+      },
+      "cityCode": {
+        "type": "keyword"
+      },
+      "cityName": {
+        "type": "keyword"
+      },
+      "status": {
+        "type": "keyword"
+      },
+      "priceMin": {
+        "type": "double"
+      },
+      "priceMax": {
+        "type": "double"
+      },
+      "showStart": {
+        "type": "date",
+        "format": "strict_date_optional_time||epoch_millis"
+      },
+      "showEnd": {
+        "type": "date",
+        "format": "strict_date_optional_time||epoch_millis"
+      },
+      "saleStart": {
+        "type": "date",
+        "format": "strict_date_optional_time||epoch_millis"
+      },
+      "heat": {
+        "type": "integer"
+      },
+      "posterUrl": {
+        "type": "keyword",
+        "index": false,
+        "ignore_above": 512
+      },
+      "createTime": {
+        "type": "date",
+        "format": "strict_date_optional_time||epoch_millis"
+      },
+      "updateTime": {
+        "type": "date",
+        "format": "strict_date_optional_time||epoch_millis"
+      }
+    }
+  }
+}

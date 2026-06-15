@@ -1,0 +1,5 @@
+com.damai.starter.redis.RedissonAutoConfiguration
+com.damai.starter.kafka.KafkaProducerAutoConfiguration
+com.damai.starter.sentinel.SentinelAutoConfiguration
+com.damai.starter.es.ElasticSearchAutoConfiguration
+com.damai.starter.mybatis.MybatisPlusAutoConfiguration
