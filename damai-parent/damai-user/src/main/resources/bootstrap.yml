@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: damai-user
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      # Nacos 服务发现
+      discovery:
+        server-addr: ${NACOS_ADDR:127.0.0.1:8848}
+        namespace: ${NACOS_NAMESPACE:}
+        group: DEFAULT_GROUP
+      # Nacos 配置中心
+      config:
+        server-addr: ${NACOS_ADDR:127.0.0.1:8848}
+        namespace: ${NACOS_NAMESPACE:}
+        group: DEFAULT_GROUP
+        file-extension: yml
+        # 共享配置（Data ID 格式：${spring.application.name}-${profile}.yml）
+        shared-configs:
+          - data-id: common.yml
+            group: COMMON_GROUP
+            refresh: true
+
+server:
+  port: 8081

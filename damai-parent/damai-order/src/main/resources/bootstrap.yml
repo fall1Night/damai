@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: damai-order
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_ADDR:127.0.0.1:8848}
+        namespace: ${NACOS_NAMESPACE:}
+        group: DEFAULT_GROUP
+      config:
+        server-addr: ${NACOS_ADDR:127.0.0.1:8848}
+        namespace: ${NACOS_NAMESPACE:}
+        group: DEFAULT_GROUP
+        file-extension: yml
+        shared-configs:
+          - data-id: common.yml
+            group: COMMON_GROUP
+            refresh: true
+
+server:
+  port: 8083
+
+# Seata 配置
+seata:
+  enabled: true
+  application-id: damai-order
+  tx-service-group: damai-tx-group
+  service:
+    vgroup-mapping:
+      damai-tx-group: default
+  registry:
+    type: nacos
+    nacos:
+      server-addr: ${NACOS_ADDR:127.0.0.1:8848}
+      namespace: ${NACOS_NAMESPACE:}

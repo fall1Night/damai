@@ -43,16 +43,19 @@ public enum ErrorCode {
     DATA_TYPE_ERROR("10008", "数据类型转换错误"),
 
     // ==================== 2xxxx 用户域错误 ====================
-    USER_MOBILE_EXISTS("20001", "手机号已注册"),
+    USER_ALREADY_EXISTS("20001", "手机号已注册"),
     USER_NOT_FOUND("20002", "用户不存在"),
     USER_PASSWORD_ERROR("20003", "账号或密码错误"),
     USER_MOBILE_OR_PASSWORD_ERROR("20004", "手机号或密码错误"),
     USER_DISABLED("20005", "账号已被禁用"),
-    USER_LOGIN_FAIL_LIMIT("20006", "登录失败次数过多，账号已被锁定 15 分钟"),
-    SMS_CODE_ERROR("20007", "验证码错误或已过期"),
-    SMS_CODE_SEND_TOO_FREQUENT("20008", "验证码发送过于频繁"),
-    USER_TOKEN_INVALID("20009", "Token 无效"),
-    USER_TOKEN_REFRESH_INVALID("20010", "RefreshToken 无效"),
+    USER_LOGIN_LOCKED("20006", "登录失败次数过多，账号已被锁定 15 分钟"),
+    SMS_CODE_EXPIRED("20007", "验证码已过期"),
+    SMS_CODE_ERROR("20008", "验证码错误"),
+    SMS_CODE_SEND_TOO_FREQUENT("20009", "验证码发送过于频繁"),
+    TOKEN_INVALID("20010", "Token 无效"),
+    TOKEN_EXPIRED("20011", "Token 已过期"),
+    VIEWER_LIMIT_EXCEEDED("20012", "观演人数量已达上限（最多5个）"),
+    VIEWER_NOT_FOUND("20013", "观演人不存在"),
 
     // ==================== 3xxxx 节目域错误 ====================
     PROGRAM_NOT_FOUND("30001", "节目不存在或已下架"),

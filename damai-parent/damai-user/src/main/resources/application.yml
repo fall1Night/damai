@@ -1,0 +1,56 @@
+spring:
+  application:
+    name: damai-user
+  profiles:
+    active: dev
+
+# ========== 本地开发配置（正式环境由 Nacos 托管） ==========
+server:
+  port: 8081
+
+# MySQL
+spring.datasource:
+  driver-class-name: com.mysql.cj.jdbc.Driver
+  url: jdbc:mysql://${MYSQL_HOST:127.0.0.1}:${MYSQL_PORT:3306}/damai_user?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+  username: ${MYSQL_USER:root}
+  password: ${MYSQL_PASSWORD:root}
+
+# MyBatis-Plus
+mybatis-plus:
+  mapper-locations: classpath:mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+# JWT 配置
+jwt:
+  secret: ${JWT_SECRET:damai-secret-key-must-be-at-least-256-bits-long-for-HS256}
+  access-token-expire: 7200      # accessToken 有效期（秒），默认 2 小时
+  refresh-token-expire: 604800   # refreshToken 有效期（秒），默认 7 天
+  issuer: damai
+
+# Redis
+spring.data.redis:
+  host: ${REDIS_HOST:127.0.0.1}
+  port: ${REDIS_PORT:6379}
+  password: ${REDIS_PASSWORD:}
+  database: 0
+
+# Knife4j 接口文档
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /v3/api-docs
+
+# 日志
+logging:
+  level:
+    com.damai.user: debug
+    com.damai.common: debug

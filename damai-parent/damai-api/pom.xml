@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.damai</groupId>
+        <artifactId>damai-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>damai-api</artifactId>
+    <name>damai-api</name>
+    <description>Feign 接口与共享 DTO 模块：定义服务间调用契约，被各业务服务依赖。</description>
+
+    <dependencies>
+        <!-- 依赖 common：复用 ApiResult / 枚举 / 常量 / 异常 -->
+        <dependency>
+            <groupId>com.damai</groupId>
+            <artifactId>damai-common</artifactId>
+        </dependency>
+        <!-- Lombok：DTO 使用 @Data -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <!-- jakarta.validation：DTO 字段校验注解（@NotNull 等），由调用方在 Controller 侧触发 -->
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+        </dependency>
+        <!-- OpenFeign：Feign 接口注解（@FeignClient / @RequestMapping 等）。
+             optional=true，避免强制要求所有依赖方启用 Feign。 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+</project>

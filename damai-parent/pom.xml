@@ -27,15 +27,15 @@
     <description>大麦票务系统父工程：统一版本管理与模块聚合</description>
 
     <!-- ======================== 子模块聚合 ======================== -->
-    <!-- M0 骨架先启用 3 个基础模块，业务服务随后续批次逐步解除注释 -->
+    <!-- M0 骨架已完成 3 个基础模块：common + api + service-starter，业务服务待生成 -->
     <modules>
         <module>damai-common</module>
         <module>damai-api</module>
         <module>damai-service-starter</module>
-        <!-- 以下模块待生成，后续批次启用：
         <module>damai-user</module>
         <module>damai-program</module>
         <module>damai-order</module>
+        <!-- 以下模块待生成，后续批次启用：
         <module>damai-pay</module>
         <module>damai-base</module>
         <module>damai-gateway</module>
