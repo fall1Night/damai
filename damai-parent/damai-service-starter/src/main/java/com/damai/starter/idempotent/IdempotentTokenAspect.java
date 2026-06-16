@@ -1,6 +1,5 @@
 package com.damai.starter.idempotent;
 
-import com.damai.common.constants.HeaderConstant;
 import com.damai.common.constants.RedisKeyConstant;
 import com.damai.common.exception.BizException;
 import com.damai.common.exception.ErrorCode;
@@ -13,11 +12,9 @@ import org.redisson.api.RScript;
 import org.redisson.api.RedissonClient;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
-import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -41,7 +38,6 @@ import java.util.List;
  */
 @Slf4j
 @Aspect
-@Component
 @Order(Ordered.HIGHEST_PRECEDENCE + 1)
 public class IdempotentTokenAspect {
 
@@ -69,11 +65,13 @@ public class IdempotentTokenAspect {
         String redisKey = RedisKeyConstant.IDEMPOTENT_TOKEN.formatted(token);
 
         // 3. Lua 原子 GETDEL 消费令牌
-        RScript script = redissonClient.getScript(String.valueOf(LUA_GETDEL));
-        Object result = script.eval(
+        //    Redisson RScript 正确用法：getScript() 无参取实例，
+        //    eval(Mode, script, ReturnType, keyList, args...) 分别传 KEYS 与 ARGV。
+        Object result = redissonClient.getScript().eval(
                 RScript.Mode.READ_WRITE,
                 LUA_GETDEL,
-                org.redisson.client.api.args.RScript.Args.of(redisKey)
+                RScript.ReturnType.VALUE,
+                List.of(redisKey)
         );
 
         // 4. 判断结果

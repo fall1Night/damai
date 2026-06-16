@@ -7,3 +7,4 @@ com.damai.starter.seata.SeataAutoConfiguration
 com.damai.starter.web.GlobalExceptionHandler
 com.damai.starter.web.TraceIdFilter
 com.damai.starter.web.CorsAutoConfiguration
+com.damai.starter.idempotent.IdempotentAutoConfiguration
