@@ -34,8 +34,8 @@
         <module>damai-service-starter</module>
         <module>damai-user</module>
         <module>damai-program</module>
-        <!-- 以下模块待生成，后续批次启用：
         <module>damai-order</module>
+        <!-- 以下模块待生成，后续批次启用：
         <module>damai-pay</module>
         <module>damai-base</module>
         <module>damai-gateway</module>
