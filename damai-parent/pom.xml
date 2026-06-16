@@ -32,9 +32,9 @@
         <module>damai-common</module>
         <module>damai-api</module>
         <module>damai-service-starter</module>
-        <!-- 以下模块待生成，后续批次启用：
         <module>damai-user</module>
         <module>damai-program</module>
+        <!-- 以下模块待生成，后续批次启用：
         <module>damai-order</module>
         <module>damai-pay</module>
         <module>damai-base</module>
