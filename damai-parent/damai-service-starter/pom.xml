@@ -99,9 +99,10 @@
         </dependency>
 
         <!-- ==================== AOP（幂等 / 防重切面） ==================== -->
+        <!-- Spring Boot 4.0 将 spring-boot-starter-aop 重命名为 spring-boot-starter-aspectj -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
+            <artifactId>spring-boot-starter-aspectj</artifactId>
             <optional>true</optional>
         </dependency>
 
