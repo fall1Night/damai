@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: damai-pay
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_ADDR:127.0.0.1:8848}
+        namespace: ${NACOS_NAMESPACE:}
+        group: DEFAULT_GROUP
+      config:
+        server-addr: ${NACOS_ADDR:127.0.0.1:8848}
+        namespace: ${NACOS_NAMESPACE:}
+        group: DEFAULT_GROUP
+        file-extension: yml
+        shared-configs:
+          - data-id: common.yml
+            group: COMMON_GROUP
+            refresh: true
+
+server:
+  port: 8084
+
+# Seata 配置（与 order 同事务组，支付单落库参与分布式事务）
+seata:
+  enabled: true
+  application-id: damai-pay
+  tx-service-group: damai-tx-group
+  service:
+    vgroup-mapping:
+      damai-tx-group: default
+  registry:
+    type: nacos
+    nacos:
+      server-addr: ${NACOS_ADDR:127.0.0.1:8848}
+      namespace: ${NACOS_NAMESPACE:}

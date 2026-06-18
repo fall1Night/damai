@@ -2,11 +2,6 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile name="Maven default annotation processors profile" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-      </profile>
       <profile name="Annotation profile for damai-parent" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -14,12 +9,13 @@
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar" />
         </processorPath>
-        <module name="damai-program" />
-        <module name="damai-user" />
         <module name="damai-order" />
         <module name="damai-common" />
-        <module name="damai-api" />
         <module name="damai-service-starter" />
+        <module name="damai-program" />
+        <module name="damai-user" />
+        <module name="damai-pay" />
+        <module name="damai-api" />
       </profile>
     </annotationProcessing>
   </component>
@@ -28,6 +24,7 @@
       <module name="damai-api" options="-parameters" />
       <module name="damai-common" options="-parameters" />
       <module name="damai-order" options="-parameters" />
+      <module name="damai-pay" options="-parameters" />
       <module name="damai-program" options="-parameters" />
       <module name="damai-service-starter" options="-parameters" />
       <module name="damai-user" options="-parameters" />
